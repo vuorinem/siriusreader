@@ -1,0 +1,19 @@
+nr-book-selection {
+    button.btn {
+        text-align: left;
+        white-space: normal;
+    }
+
+    @include media-breakpoint-down(sm) {
+        .year-selection {
+            button.btn {
+                display: block;
+                width: 100%;
+            }
+            button.btn + button.btn {
+                margin-top: 8px;
+            }
+        }
+    }
+    
+}

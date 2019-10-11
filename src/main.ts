@@ -2,10 +2,12 @@ import {Aurelia} from 'aurelia-framework'
 import * as environment from '../config/environment.json';
 import {PLATFORM} from 'aurelia-pal';
 
+import 'styles/app.scss';
+
 export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .feature(PLATFORM.moduleName('resources/index'));
+    .plugin(PLATFORM.moduleName('aurelia-dialog'));
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
 

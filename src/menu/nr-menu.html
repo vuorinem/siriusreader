@@ -1,0 +1,27 @@
+<template>
+  <header class="${ isOpen ? 'menu-open' : 'menu-closed' }">
+    <div class="container">
+      <div class="d-flex justify-content-end">
+        <nav>
+          <div class="dropdown">
+            <button href="#" class="btn btn-sm btn-dark" click.delegate="isOpen = !isOpen">
+              <span hide.bind="isOpen" class="oi oi-menu"></span>
+              <span show.bind="isOpen" class="oi oi-caret-top"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right text-right ${ isOpen ? 'show' : '' }">
+              <a class="dropdown-item" href="#" click.delegate="openInformationSheet()">
+                <span class="oi oi-info"></span> Information
+              </a>
+              <a class="dropdown-item text-danger" href="#" click.delegate="withdraw()">
+                <span class="oi oi-ban"></span> Withdraw
+              </a>
+              <a class="dropdown-item" href="#" click.delegate="logout()">
+                <span class="oi oi-account-logout"></span> Logout
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+</template>

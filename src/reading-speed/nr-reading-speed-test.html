@@ -1,0 +1,136 @@
+<template>
+  <require from="../utility/number-value-converter"></require>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-8">
+      <h1 hide.bind="!!startTime && !endTime">Reading Speed Test</h1>
+
+      <div show.bind="!startTime">
+        <p>
+          Please read the following text without interruptions at your normal reading speed.
+          Click the <b>start</b> button when you are ready to start.
+        </p>
+      </div>
+
+      <div show.bind="!!startTime && !endTime" ref="textContainer" class="text-justify">
+        <div if.bind="attempt % 3 === 1">
+          <h1>On Being Sane in Insane Places</h1>
+
+          <h2>D.L. Rosenhan (1973)</h2>
+
+          <p>
+            If sanity and insanity exist, how shall we know them? The question is neither capricious nor itself insane.
+            However much we may be personally convinced that we can tell the normal from the abnormal, the evidence is
+            simply not compelling. It is commonplace, for example, to read about murder trials wherein eminent
+            psychiatrists for the defense are contradicted by equally eminent psychiatrists for the prosecution on the
+            matter of the defendant's sanity. More generally, there are a great deal of conflicting data on the
+            reliability, utility, and meaning of such terms as "sanity," "insanity," "mental illness," and
+            "schizophrenia". Finally, as early as 1934, Benedict suggested that normality and abnormality are not
+            universal. What is viewed as normal in one culture may be seen as quite aberrant in another. Thus, notions
+            of normality and abnormality may not be quite-as accurate as people believe they are.
+          </p>
+
+          <p>
+            To raise questions regarding normality and abnormality is in no way to question the fact that some behaviors
+            are deviant or odd. Murder is deviant. So, too, are hallucinations. Nor does raising such questions deny the
+            existence of the personal anguish that is often associated with "mental illness." Anxiety and depression
+            exist. Psychological suffering exists. But normality and abnormality, sanity and insanity, and the diagnoses
+            that flow from them may be less substantive than many believe them to be.
+          </p>
+
+          <p>
+            At its heart, the question of whether the sane can be distinguished from the insane (and whether degrees of
+            insanity can be distinguished from each other) is a simple matter: do the salient characteristics that lead
+            to diagnoses reside in the patients themselves or in the environments and contexts in which observers find
+            them?
+          </p>
+        </div>
+        <div if.bind="attempt % 3 === 2">
+          <h1>On Being Sane in Insane Places</h1>
+
+          <h2>D.L. Rosenhan (1973)</h2>
+
+          <p>
+            From Bleuler, through Kretchmer, through the formulators of the recently revised Diagnostic and Statistical
+            Manual of the American Psychiatric Association, the belief has been strong that patients present symptoms,
+            that those symptoms can be categorized, and, implicitly, that the sane are distinguishable from the insane.
+            More recently, however, this belief has been questioned. Based in part on theoretical and anthropological
+            considerations, but also on philosophical, legal, and therapeutic ones, the view has grown that
+            psychological categorization of mental illness is useless at best and downright harmful, misleading, and
+            pejorative at worst. Psychiatric diagnoses, in this view, are in the minds of the observers and are not
+            valid summaries of characteristics displayed by the observed.
+          </p>
+
+          <p>
+            Gains can be made in deciding which of these is more nearly accurate by getting normal people (that is,
+            people who do not have, and have never suffered, symptoms of serious psychiatric disorders) admitted to
+            psychiatric hospitals and then determining whether they were discovered to be sane and, if so, how. If the
+            sanity of such pseudopatients were always detected, there would be prima facie evidence that a sane
+            individual can be distinguished from the insane context in which he is found. Normality (and presumably
+            abnormality) is distinct enough that it can be recognized wherever it occurs, for it is carried within the
+            person. If, on the other hand, the sanity of the pseudopatients were never discovered, serious difficulties
+            would arise for those who support traditional modes of psychiatric diagnosis. Given that the hospital staff
+            was not incompetent, that the pseudopatient had been behaving as sanely as he had been outside of the
+            hospital, and that it had never been previously suggested that he belonged in a psychiatric hospital, such
+            an unlikely outcome would support the view that psychiatric diagnosis betrays little about the patient but
+            much about the environment in which an observer finds him.
+          </p>
+        </div>
+        <div if.bind="attempt  % 3 === 0">
+          <h1>On Being Sane in Insane Places</h1>
+
+          <h2>D.L. Rosenhan (1973)</h2>
+
+          <p>
+            This article describes such an experiment. Eight sane people gained secret admission to 12 different
+            hospitals. Their diagnostic experiences constitute the data of the first part of this article; the remainder
+            is devoted to a description of their experiences in psychiatric institutions. Too few psychiatrists and
+            psychologists, even those who have worked in such hospitals, know what the experience is like. They rarely
+            talk about it with former patients, perhaps because they distrust information coming from the previously
+            insane. Those who have worked in psychiatric hospitals are likely to have adapted so thoroughly to the
+            settings that they are insensitive to the impact of that experience. And while there have been occasional
+            reports of researchers who submitted themselves to psychiatric hospitalization, these researchers have
+            commonly remained in the hospitals for short periods of time, often with the knowledge of the hospital
+            staff. It is difficult to know the extent to which they were treated like patients or like research
+            colleagues. Nevertheless, their reports about the inside of the psychiatric hospital have been valuable.
+            This article extends those efforts.
+          </p>
+
+          <p>
+            The eight pseudopatients were a varied group. One was a psychology graduate student in his 20's. The
+            remaining seven were older and "established." Among them were three psychologists, a pediatrician, a
+            psychiatrist, a painter, and a housewife. Three pseudopatients were women, five were men. All of them
+            employed pseudonyms, lest their alleged diagnoses embarrass them later. Those who were in mental health
+            professions alleged another occupation in order to avoid the special attentions that might be accorded by
+            staff, as a matter of courtesy or caution, to ailing colleagues.
+          </p>
+        </div>
+      </div>
+
+      <div show.bind="!!startTime && !!endTime">
+        <p show.bind="isRealisticReadingSpeed">
+          Reading speed test is now complete.
+        </p>
+        <p show.bind="!isRealisticReadingSpeed">
+          Measuring reading speed failed, please click the button below to go back to the start of the test.
+        </p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary btn-lg" click.delegate="start()" show.bind="!startTime">
+          Start
+        </button>
+        <button class="btn btn-primary btn-lg" click.delegate="end()" show.bind="!!startTime && !endTime">
+          End
+        </button>
+        <button class="btn btn-primary btn-lg" click.delegate="reset()"
+          show.bind="!!wordsPerMinuteRead && !isRealisticReadingSpeed">
+          Restart Test
+        </button>
+        <button class="btn btn-primary btn-lg" click.delegate="save()"
+          show.bind="!!wordsPerMinuteRead && isRealisticReadingSpeed">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+</template>

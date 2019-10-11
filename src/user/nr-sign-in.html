@@ -1,0 +1,37 @@
+<template>
+  <require from="./user-login"></require>
+  <require from="./user-register"></require>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        <p class="text-center">
+          <img src="/ereader-logo.png" alt="E-reader website" />
+        </p>
+
+        <ul class="nav nav-tabs nav-fill">
+          <li class="nav-item">
+            <a class="nav-link ${ isExistingUser ? 'active' : '' }" href="#" click.delegate="isExistingUser = true">
+              Existing User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ${ isExistingUser ? '' : 'active' }" href="#" click.delegate="isExistingUser = false">
+              New User / Reset Password
+            </a>
+          </li>
+        </ul>
+
+        <div class="content">
+          <p class="alert alert-info" show.bind="isPasswordSet">
+            <b>Success!</b> You can now use your new password to sign in.
+          </p>
+        </div>
+
+        <user-login if.bind="isExistingUser" email-address.bind="emailAddress" reset-password.call="resetPassword()">
+        </user-login>
+        <user-register else email-address.two-way="emailAddress" registered.call="registered()"></user-register>
+      </div>
+    </div>
+  </div>
+</template>

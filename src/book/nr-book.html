@@ -1,0 +1,33 @@
+<template>
+  <require from="./nr-section"></require>
+  <require from="./nr-highlight-menu"></require>
+  <require from="../utility/number-value-converter"></require>
+
+  <nr-highlight-menu show.bind="isHighlightMenuOpen" book.bind="book" highlight.bind="selectedHighlight"
+    css="transform: translateX(${highlightMenuX}px) translateY(${highlightMenuY}px);"></nr-highlight-menu>
+
+  <div class="container">
+    <div class="book-overlay d-flex align-items-center justify-content-center" show.bind="isContentHidden"
+      click.delegate="overlayClick()">
+      <p class="inactive-message">
+        <span show.bind="isInactive || !windowTrackingService.isFocused">- Click to activate the reader -</span>
+        <span show.bind="!isInitialized">Loading, please wait...</span>
+      </p>
+    </div>
+    <div class="book-content" ref="bookContentElement" mousedown.delegate="mouseDown($event)"
+      mousemove.delegate="mouseMove($event)" mouseup.delegate="mouseUp($event)" mouseleave.trigger="mouseLeave($event)"
+      touchstart.trigger="touchStart($event)" touchend.trigger="touchEnd($event)"
+      touchcancel.trigger="touchCancel($event)" touchmove.trigger="touchMove($event)">
+      <div class="book-sections animate-${browseStyle}" ref="bookSectionsElement"
+        css="transform: translateX(${ -currentViewOffset }px);">
+        <nr-section repeat.for="section of sections" section.bind="section"
+          css="transform: translateX(${ section.left }px);" is-dialog-open.bind="isDialogOpen"></nr-section>
+      </div>
+    </div>
+    <div class="progress book-progress" click.trigger="progressBarClick($event)">
+      <div class="progress-bar" role="progressbar" css="width: ${progressPercentage}%;"
+        aria-valuenow.bind="progressPercentage" aria-valuemin="0" aria-valuemax="100">${progressPercentage | number}%
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,18 @@
+nr-questionnaire {
+    .form-group {
+        margin-top: 15px;
+        margin-bottom: 30px;
+
+        label {
+            font-weight: 500;
+        }
+
+        nr-answer {
+            display: block;
+        
+            label {
+                font-weight: normal;
+            }
+        }
+    }
+}

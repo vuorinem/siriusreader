@@ -1,0 +1,24 @@
+<template>
+  <div class="btn-toolbar justify-content-between">
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-secondary ${ highlight.highlight.isHighlighted ? 'active' : '' }"
+        click.delegate="toggleHighlighted()">
+        <span class="oi oi-pencil"></span>
+      </button>
+      <button class="btn btn-secondary ${ highlight.highlight.isUnderlined ? 'active' : '' }"
+        click.delegate="toggleUnderlined()">
+        <span class="oi oi-underline"></span>
+      </button>
+      <button class="btn btn-secondary ${ highlight.highlight.annotation || showAnnotation ? 'active' : '' }"
+        click.delegate="toggleAnnotation()">
+        <span class="oi oi-comment-square"></span>
+      </button>
+    </div>
+    <button class="btn btn-default btn-sm" show.bind="!!highlight.highlight.annotation"
+      click.delegate="clearAnnotation()">
+      <span class="oi oi-trash"></span>
+    </button>
+  </div>
+  <textarea class="annotation-input" value.bind="highlight.highlight.annotation" ref="annotationInput"
+    show.bind="highlight.highlight.annotation || showAnnotation"></textarea>
+</template>

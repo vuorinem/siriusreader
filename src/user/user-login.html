@@ -1,0 +1,41 @@
+<template>
+  <div class="content">
+    <form submit.trigger="signIn()">
+      <div class="form-group">
+        <label for="email-address">Email Address</label>
+        <input id="email-address" type="email" value.bind="emailAddress" class="form-control"
+          disabled.bind="isLoading" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" value.bind="password" class="form-control" disabled.bind="isLoading"
+          autocomplete="current-password" />
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md">
+          <button type="submit" class="btn btn-primary" disabled.bind="!emailAddress || !password || isLoading">
+            <span class="oi oi-account-login"></span> Sign In
+          </button>
+        </div>
+        <div class="col-md text-right">
+          <span class="loading-spinner" show.bind="isLoading"></span>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" show.bind="isError">
+        Could not log in, please check your email address and password.
+      </div>
+
+      <div class="alert alert-danger" show.bind="isConnectionError">
+        Error connecting to the reader, please try again later
+      </div>
+
+      <div class="alert alert-info">
+        If you forgot your password, you can
+        <a href="#" click.delegate="resetPassword()">reset your password</a>
+        with a verification code.
+      </div>
+    </form>
+  </div>
+</template>

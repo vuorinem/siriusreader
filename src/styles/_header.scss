@@ -1,0 +1,38 @@
+header {
+    @extend .bg-light;
+
+    height: $title-height;
+    z-index: 10;
+    overflow: hidden;
+
+    &.menu-open {
+        overflow: visible;
+    }
+
+    > .container {
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        > div {
+            padding: 5px;
+            padding-left: $book-padding;
+            padding-right: $book-padding;
+        }
+    }
+
+    nav {
+        .dropdown-menu {
+            background-color: rgba(255, 255, 255, 0.9);
+
+            .dropdown-item {
+                span.oi {
+                    float: left;
+                    line-height: inherit;
+                }
+            }
+        }
+    }
+}

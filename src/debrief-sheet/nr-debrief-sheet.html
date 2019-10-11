@@ -1,0 +1,30 @@
+<template>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-8">
+      <form submit.trigger="send()">
+        <h1>Debrief information</h1>
+
+        <p class="text-justify">
+          Thank you for taking the time to participate in our study.
+        </p>
+
+        <p class="text-justify">
+          If you signed up via SONA systems, please give your full name below to receive your credits.
+          You can continue using the reader after completing this step.
+        </p>
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input id="name" type="text" value.bind="name" class="form-control">
+          <small class="form-text text-muted">Name will only be used for credits and will not be stored</small>
+        </div>
+
+        <p class="text-center">
+          <button type="submit" class="btn btn-primary btn-lg" disabled.bind="!name || http.isRequesting">
+            Send
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+</template>

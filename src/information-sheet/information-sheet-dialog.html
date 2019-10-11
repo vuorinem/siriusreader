@@ -1,0 +1,14 @@
+<template>
+  <require from="./information-sheet-content"></require>
+
+  <ux-dialog class="col-md-8">
+    <ux-dialog-body>
+      <h2>Information Sheet</h2>
+      <information-sheet-content></information-sheet-content>
+    </ux-dialog-body>
+
+    <ux-dialog-footer>
+      <button click.trigger="dialogController.ok()">Close</button>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

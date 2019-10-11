@@ -1,0 +1,58 @@
+<template>
+  <div class="container" if.bind="!showBook">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        <div if.bind="!courses" class="year-selection">
+          <h1 class="text-center">Select Year</h1>
+          <p>Please select the current academic year of your studies</p>
+
+          <button class="btn btn-primary btn-lg btn-block" click.delegate="selectYear(1)" disabled.bind="isLoading">
+            1st year
+          </button>
+          <button class="btn btn-primary btn-lg btn-block" click.delegate="selectYear(2)" disabled.bind="isLoading">
+            2nd year
+          </button>
+          <button class="btn btn-primary btn-lg btn-block" click.delegate="selectYear(3)" disabled.bind="isLoading">
+            3rd year
+          </button>
+          <button class="btn btn-primary btn-lg btn-block" click.delegate="selectYear(4)" disabled.bind="isLoading">
+            4th year
+          </button>
+          <button class="btn btn-primary btn-lg btn-block" click.delegate="selectYear(5)" disabled.bind="isLoading">
+            5th year
+          </button>
+        </div>
+
+        <div if.bind="courses && !selectedCourse">
+          <h1 class="text-center">Select Course</h1>
+          <p>Please select the course you are studying</p>
+
+          <button class="btn btn-primary btn-lg btn-block" repeat.for="course of courses"
+            click.delegate="selectCourse(course)" disabled.bind="isLoading">
+            ${ course.name }
+          </button>
+
+          <button class="btn btn-default btn-block" click.delegate="selectYear()">
+            <span class="oi oi-chevron-left"></span> Back to year
+            selection
+          </button>
+        </div>
+
+        <div if.bind="!!selectedCourse">
+          <h1 class="text-center">Select Topic</h1>
+          <p>Please select your debate workshop and topic</p>
+
+          <button class="btn btn-primary btn-lg btn-block" repeat.for="topic of selectedCourse.topics"
+            click.delegate="selectTopic(topic)" disabled.bind="isLoading">
+            ${ topic.name }
+          </button>
+
+          <button class="btn btn-default btn-block" click.delegate="selectCourse()">
+            <span class="oi oi-chevron-left"></span> Back to course
+            selection
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

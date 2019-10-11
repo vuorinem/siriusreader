@@ -1,0 +1,85 @@
+<template>
+  <div if.bind="question.questionType === 'likert'" class="d-flex btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of likertOptions" class="col btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'frequency'" class="d-flex btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of frequencyOptions" class="col btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'likeme'" class="d-flex btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of likemeOptions" class="col btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'trueofme'" class="d-flex btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of trueOfMeOptions" class="col btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      <span innerhtml.bind="option | sanitizeHTML"></span>
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'gpa'" class="">
+    <div repeat.for="option of gpaOptions" class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="${ name }-gpa-${ $index }" name.bind="name"
+        value.bind="option" checked.bind="value">
+      <label class="custom-control-label" for="${ name }-gpa-${ $index }">${ option }</label>
+    </div>
+  </div>
+  <div if.bind="question.questionType === 'taughtin'" class="d-flex btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of taughtInOptions" class="col btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'devices'" class="">
+    <div repeat.for="option of devices" class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="${ name }-devices-${ $index }" name.bind="name"
+        value.bind="option" checked.bind="selectedDevices">
+      <label class="custom-control-label" for="${ name }-devices-${ $index }">${ option }</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="${ name }-devices-other" name.bind="name"
+        value.bind="deviceOther" checked.bind="isOtherSelected">
+      <label class="custom-control-label" for="${ name }-devices-other">
+        Other: <input type="text" value.bind="deviceOther" class="form-control" />
+      </label>
+    </div>
+  </div>
+  <div if.bind="question.questionType === 'articleparts'" class="">
+    <div repeat.for="option of articleParts" class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="${ name }-articleparts-${ $index }" name.bind="name"
+        value.bind="option" checked.bind="selectedArticleParts">
+      <label class="custom-control-label" for="${ name }-articleparts-${ $index }">${ option }</label>
+    </div>
+  </div>
+  <div if.bind="question.questionType === 'gender'" class="btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of genders" class="btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'yesno'" class="btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of yesno" class="btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'yesnounsure'" class="btn-group btn-group-sm btn-group-toggle">
+    <label repeat.for="option of yesnounsure" class="btn btn-light ${ value === option ? 'active' : '' }">
+      <input type="radio" name.bind="name" value.bind="option" checked.bind="value">
+      ${ option }
+    </label>
+  </div>
+  <div if.bind="question.questionType === 'number'" class="row">
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+      <input type="number" value.bind="value" class="form-control" name.bind="name" />
+    </div>
+  </div>
+  <textarea if.bind="question.questionType==='open'" type="text" value.bind="value" class="form-control"
+    name.bind="name"></textarea>
+</template>

@@ -1,0 +1,33 @@
+<template>
+  <ux-dialog class="col-sm-6">
+    <ux-dialog-body>
+      <h2>Withdraw From Study</h2>
+      <p>
+        Withdrawing from the study will delete all the data related to your
+        account.
+        The data cannot be retrieved after the withdrawal.
+      </p>
+      <div if.bind="!withdrawal">
+        <button class="btn btn-danger btn-lg btn-block" click.delegate="preConfirm()">
+          I want to withdraw from the study
+        </button>
+      </div>
+      <div else>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" value.bind="withdrawal.name" class="form-control">
+          <small class="form-text text-muted">Name will only be used for
+            credits and will not be stored</small>
+        </div>
+        <button class="btn btn-danger btn-lg btn-block" click.delegate="confirm()"
+          disabled.bind="http.isRequesting">
+          Confirm withdrawal
+        </button>
+      </div>
+    </ux-dialog-body>
+
+    <ux-dialog-footer>
+      <button click.trigger="dialogController.cancel()">Cancel</button>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

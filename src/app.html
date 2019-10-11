@@ -1,3 +1,41 @@
-<template>
-  <h1>${message}</h1>
+﻿<template>
+  <require from="information-sheet/nr-information-sheet"></require>
+  <require from="consent-form/nr-consent-form"></require>
+  <require from="debrief-sheet/nr-debrief-sheet"></require>
+  <require from="reading-speed/nr-reading-speed-test"></require>
+  <require from="questionnaire/nr-questionnaire"></require>
+  <require from="book-selection/nr-book-selection"></require>
+  <require from="menu/nr-menu"></require>
+  <require from="book/nr-book"></require>
+  <require from="user/nr-sign-in"></require>
+
+  <div class="app-container">
+    <div class="app-content" if.bind="isInitialized">
+      <nr-menu if.bind="showMenu" is-book-open.bind="showBook" is-open.bind="isMenuOpen"></nr-menu>
+      <div class="container" if.bind="!showBook">
+        <nr-sign-in if.bind="showSignIn"></nr-sign-in>
+        <nr-information-sheet if.bind="showInformationSheet"></nr-information-sheet>
+        <nr-consent-form if.bind="showConsentForm"></nr-consent-form>
+        <nr-reading-speed-test if.bind="showReadingSpeedTest"></nr-reading-speed-test>
+        <nr-book-selection if.bind="showBookSelection"></nr-book-selection>
+        <nr-questionnaire if.bind="showMotivationQuestionnaire" name="motivation"></nr-questionnaire>
+        <nr-questionnaire if.bind="showAcademicQuestionnaire" name="academic-reading"></nr-questionnaire>
+        <div if.bind="showFinalQuestionnaire">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-8">
+              <h2>Reading deadline passed</h2>
+              <p>
+                You have reached the deadline for reading the article for this study. Please answer to the final
+                questionnaire below. Once you have submitted your answers, you can continue reading, but we will
+                not use the data after the deadline for the study.
+              </p>
+            </div>
+          </div>
+          <nr-questionnaire name="reading-strategies"></nr-questionnaire>
+        </div>
+        <nr-debrief-sheet if.bind="showDebriefSheet"></nr-debrief-sheet>
+      </div>
+      <nr-book if.bind="showBook" is-menu-open.bind="isMenuOpen"></nr-book>
+    </div>
+  </div>
 </template>

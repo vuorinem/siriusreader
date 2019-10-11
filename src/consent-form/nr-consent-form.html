@@ -1,0 +1,137 @@
+<template>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-8">
+      <form submit.trigger="confirm()">
+        <h1>Digital Academic Reading Behaviours of Undergraduate Students</h1>
+        <h2>Consent Form</h2>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-1" value="1"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-1">
+              I understand that my participation in this project will involve responding to three questionnaires on
+              separate occasions, completing a reading speed test, registering for the e-reader website and reading an
+              academic article relevant to my course of study on the e-reader website over 7 days. This will take
+              approximately 2.5 hours of my time.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-2" value="2"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-2">
+              I understand that the e-reader website will automatically track my reading progress, including reading
+              speed, page turns, annotations, unfocusing the browser, device being used and timing of reading sessions.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-3" value="3"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-3">
+              I understand that participation in this study is entirely voluntary and that I can withdraw from the
+              study at any time without giving a reason and without loss of course credit.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-4" value="4"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-4">
+              I understand that I am free to ask any questions at any time and can discuss my concerns with the
+              experimenter or their supervisor.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-5" value="5"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-5">
+              I understand that the information provided by me will be held anonymously so that it is impossible to
+              trace this information back to me individually. Information will be held in a secure, password-protected
+              computer and may be retained indefinitely.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-6" value="6"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-6">
+              To ensure access to the data for the wider research community, the anonymous dataset maybe archived in
+              an online repository (e.g., the <a href="https://osf.io" target="_blank" rel="noopener">Open Science
+                Framework</a>) or send to other
+              researchers upon request for inspection.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-7" value="7"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-7">
+              I understand that at the end of the study I will be provided with additional information about the
+              purpose of the study.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-8" value="8"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-8">
+              I have had an opportunity to discuss with the experimenter any questions or concerns I have about the
+              study at this stage.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-9" value="9"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-9">
+              This consent form will be stored electronically on a password protected server and separate from any
+              data collected for 5 years after the conclusion of the study.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="consent-10" value="10"
+              checked.bind="consentsConfirmed">
+            <label class="custom-control-label text-justify" for="consent-10">
+              I consent to participate in this study conducted by MRes student Pauliina Vuorinen in the School of
+              Psychology, University of Aberdeen under the supervision of Professor Ben Tatler.
+            </label>
+          </div>
+        </div>
+
+        <p class="text-center">
+          <button type="submit" class="btn btn-primary btn-lg" disabled.bind="!canContinue">
+            Continue
+          </button>
+        </p>
+
+        <p>
+          Contact information:<br />
+          Pauliina Vuorinen, <a href="mailto:p.vuorinen.18@aberdeen.ac.uk">p.vuorinen.18@aberdeen.ac.uk</a><br />
+          Professor Ben Tatler, <a href="mailto:b.w.tatler@abdn.ac.uk">b.w.tatler@abdn.ac.uk</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</template>

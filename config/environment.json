@@ -1,4 +1,6 @@
 {
   "debug": true,
-  "testing": true
+  "testing": true,
+  "apiUrl": "https://localhost:62694",
+  "tokenEndpoint": "https://localhost:62694/connect/token"
 }

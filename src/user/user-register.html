@@ -1,0 +1,88 @@
+<template>
+  <div class="content">
+    <form submit.trigger="register()">
+      <div class="form-group row">
+        <div class="col-md">
+          <label for="email-address">Email Address</label>
+          <div class="input-group">
+            <input id="email-address" type="email" value.bind="emailAddress" class="form-control"
+              readonly.bind="isEmailSent" autocomplete="email">
+            <div class="input-group-append" show.bind="isEmailSent">
+              <button type="button" class="btn btn-warning" disabled.bind="!emailAddress || isLoading"
+                click.delegate="reset()">
+                <span class="oi oi-x"></span> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row" hide.bind="isEmailSent">
+        <div class="col-md">
+          <button type="button" class="btn btn-primary" disabled.bind="!emailAddress || isLoading"
+            click.delegate="requestVerification()">
+            <span class="oi oi-envelope-closed"></span> Send Verification Code
+          </button>
+        </div>
+        <div class="col-md text-right">
+          <span class="loading-spinner" show.bind="isLoading"></span>
+        </div>
+      </div>
+
+      <p class="text-info" show.bind="isEmailSent && !isEmailVerified">
+        Please check your inbox for the verification code
+      </p>
+
+      <div class="form-group row" show.bind="isEmailSent && !isEmailVerified">
+        <div class="col-md">
+          <input id="verification-token" type="text" value.bind="verificationToken" class="form-control" />
+        </div>
+        <div class="col-md">
+          <button type="button" class="btn btn-primary" disabled.bind="!verificationToken || isLoading"
+            click.delegate="verify()">
+            <span class="oi oi-check"></span> Verify
+          </button>
+        </div>
+        <div class="col-md text-right">
+          <span class="loading-spinner" show.bind="isLoading"></span>
+        </div>
+      </div>
+
+      <p class="text-success" show.bind="isEmailVerified">
+        <span class="oi oi-check"></span> Email Address Verified
+      </p>
+
+      <div class="form-group" show.bind="isEmailVerified && !isEmailRegistered">
+        <label for="name">Full Name</label>
+        <input id="name" type="text" value.bind="name" class="form-control">
+        <small class="form-text text-muted">Name will only be used for credits and will not be stored</small>
+      </div>
+
+      <div class="form-group" show.bind="isEmailVerified">
+        <label for="password">Select Password</label>
+        <input id="password" type="password" value.bind="password" class="form-control" autocomplete="new-password">
+      </div>
+
+      <div class="form-group" show.bind="isEmailVerified">
+        <label for="password-confirm">Re-type Password</label>
+        <input id="password-confirm" type="password" value.bind="passwordConfirm" class="form-control"
+          autocomplete="new-password">
+      </div>
+
+      <div class="form-group row" show.bind="isEmailVerified">
+        <div class="col-md">
+          <button type="submit" class="btn btn-primary" disabled.bind="!password || isLoading">
+            <span class="oi oi-account-login"></span> Sign Up
+          </button>
+        </div>
+        <div class="col-md text-right">
+          <span class="loading-spinner" show.bind="isLoading"></span>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" show.bind="error">
+        ${ error }
+      </div>
+    </form>
+  </div>
+</template>

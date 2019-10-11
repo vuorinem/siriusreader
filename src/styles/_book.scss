@@ -1,0 +1,199 @@
+html,
+body,
+div.app-container,
+div.app-content {
+    height: 100%;
+}
+
+nr-book {
+    > .container {
+        height: calc(100% - #{$title-height});
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .book-overlay {
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        width: 100%;
+        height: calc(100% - #{$title-height});
+        background-color: rgba(255, 255, 255, 0.95);
+
+        .inactive-message {
+            font-size: 1.3rem;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+        }
+    }
+    
+    .book-content {
+        height: calc(100% - #{$book-progress-height});
+        background-color: $bg-book;
+        color: $text-book;
+        overflow: hidden;
+
+        @include media-breakpoint-up(lg) {
+            background: linear-gradient(90deg,
+                $bg-book,
+                $bg-book 48%,
+                darken($bg-book, 10%) 50%,
+                $bg-book 52%);
+        }
+        
+        @include media-breakpoint-up(md) {
+            height: calc(100% - #{$book-progress-height} - #{$spacing-bottom});
+        }
+
+        &.inactive {
+            nr-section {
+                opacity: 0.3;
+            }
+        }
+
+        .book-sections {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            padding-left: $book-padding;
+            padding-right: $book-padding;
+            padding-top: $book-padding-top;
+            padding-bottom: $book-padding-bottom;
+
+            &.animate-turn {
+                transition: transform 0.2s linear;
+            }
+
+            &.animate-jump {
+                transition: transform 0.001s linear;
+            }
+
+            nr-section {
+                height: calc(100% - #{$book-padding-top} - #{$book-padding-bottom});
+                width: calc(100% - 2 * #{$book-padding});
+                display: block;
+                position: absolute;
+                line-height: 2.2rem;
+                font-size: 1.1rem;
+                // For small screens, use one column layout
+                column-gap: $column-gap;
+                column-count: 1;
+                column-width: 100vw;
+                column-fill: auto;
+
+                @include media-breakpoint-up(lg) {
+                    @each $breakpoint in map-keys($container-max-widths) {
+                        @include media-breakpoint-up($breakpoint) {
+                            column-gap: $column-gap;
+                            column-count: 2;
+                            column-width: auto;
+                        }
+                    }
+                }
+
+                img {
+                    max-width: calc(100% - 2 * #{$book-padding});
+                    padding: 0;
+                    display: block;
+                    margin: auto;
+                }
+
+                h1,
+                h2 {
+                    margin-top: 2em;
+                    text-align: center;
+                }
+
+                h3,
+                p {
+                    text-indent: 1.75rem;
+                }
+
+                p {
+                    text-align: justify;
+                    margin-top: 0.75em;
+                    margin-bottom: 0.75em;
+                    font-family: "Times New Roman", serif;
+                }
+
+                .highlight {
+                    cursor: pointer;
+
+                    &.selected {
+                        background-color: rgba(255, 0, 0, 0.2);
+                    }
+
+                    &.highlighted {
+                        background-color: rgba(255, 238, 0, 0.4);
+                    }
+
+                    &.annotated {
+                        border-bottom: 1px dotted rgba(255, 0, 0, 0.4);
+                    }
+
+                    &.underlined {
+                        border-bottom: 2px solid rgba(255, 0, 0, 0.4);
+                    }
+
+                    &.icon {
+                        display: inline;
+                        vertical-align: super;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    nr-page {
+        padding: $spacer;
+        line-height: 2.2rem;
+        font-size: 1.1rem;
+    }
+
+    .book-progress {
+        cursor: pointer;
+        height: $book-progress-height;
+        font-size: 0.9rem;
+        letter-spacing: 0.07rem;
+    }
+
+    nr-highlight-menu {
+        @extend .bg-light;
+        @extend .rounded;
+        @extend .shadow;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        padding: 5px;
+
+        .annotation-input {
+            width: 300px;
+            margin-top: 5px;
+            border: 0;
+        }
+
+        @include media-breakpoint-down(sm) {
+            transform: translateX(0) translateY(0) !important;
+            position: fixed;
+            margin: 5px;
+        }
+    }
+}
+
+ux-dialog.content-dialog {
+    img {
+        max-width: 100%;
+        padding: 10px 0;
+        margin: auto;
+        display: block;
+    }
+}

@@ -1,0 +1,31 @@
+﻿@import "~bootstrap/scss/bootstrap";
+
+$icon-font-path: "~open-iconic/font/fonts/";
+@import "~open-iconic/font/css/open-iconic-bootstrap";
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1192px,
+  xl: 1600px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 1160px,
+  xl: 1540px
+);
+
+$zindex-dropdown: 999; // Needs to be smaller than aurelia dialog and overlay z-index (currently 1000)
+
+$title-height: 42px;
+$bg-book: #FFF;
+$text-book: #404040;
+$spacing-bottom: 30px;
+$book-progress-height: 20px;
+$column-gap: 60px;
+$book-padding: 20px;
+$book-padding-top: 10px;
+$book-padding-bottom: 10px;
