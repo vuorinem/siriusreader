@@ -222,7 +222,11 @@ module.exports = ({ production } = {}, { extractCss, analyze, tests, hmr, port, 
   },
   plugins: [
     ...when(!tests, new DuplicatePackageCheckerPlugin()),
-    new AureliaPlugin(),
+    new AureliaPlugin({
+      features: {
+        svg: false, // No svg element bindins, saves 20K
+      }
+    }),
     new ProvidePlugin({
       'Promise': ['promise-polyfill', 'default']
     }),
