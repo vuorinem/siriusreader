@@ -21,7 +21,8 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "resolveJsonModule": true,
-    "allowJs": true
+    "allowJs": true,
+    "importHelpers": true
   },
   "include": [
     "./src/**/*.ts",
