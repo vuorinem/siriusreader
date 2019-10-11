@@ -25,23 +25,25 @@ const cssRules = [
   { loader: 'css-loader' },
   {
     loader: 'postcss-loader',
-    options: { plugins: () => [
-      require('autoprefixer')(),
-      require('cssnano')()
-    ] }
+    options: {
+      plugins: () => [
+        require('autoprefixer')(),
+        require('cssnano')()
+      ]
+    }
   }
 ];
 
 const sassRules = [
   {
-     loader: "sass-loader",
-     options: {
-       includePaths: ["node_modules"]
-     }
+    loader: "sass-loader",
+    options: {
+      includePaths: ["node_modules"]
+    }
   }
 ];
 
-module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, host } = {}) => ({
+module.exports = ({ production } = {}, { extractCss, analyze, tests, hmr, port, host } = {}) => ({
   resolve: {
     extensions: ['.ts', '.js'],
     modules: [srcDir, 'node_modules'],
@@ -175,7 +177,7 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
         use: extractCss ? [{
           loader: MiniCssExtractPlugin.loader
         },
-        'css-loader'
+          'css-loader'
         ] : ['style-loader', ...cssRules]
       },
       {
@@ -190,7 +192,7 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
         use: extractCss ? [{
           loader: MiniCssExtractPlugin.loader
         }, ...cssRules, ...sassRules
-        ]: ['style-loader', ...cssRules, ...sassRules],
+        ] : ['style-loader', ...cssRules, ...sassRules],
         issuer: /\.[tj]s$/i
       },
       {
@@ -206,9 +208,11 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'url-loader', options: { limit: 10000, mimetype: 'application/font-woff' } },
       // load these fonts normally, as files:
       { test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'file-loader' },
-      { test: /environment\.json$/i, use: [
-        {loader: "app-settings-loader", options: {env: production ? 'production' : 'development' }},
-      ]},
+      {
+        test: /environment\.json$/i, use: [
+          { loader: "app-settings-loader", options: { env: production ? 'production' : 'development' } },
+        ]
+      },
       ...when(tests, {
         test: /\.[jt]s$/i, loader: 'istanbul-instrumenter-loader',
         include: srcDir, exclude: [/\.(spec|test)\.[jt]s$/i],
