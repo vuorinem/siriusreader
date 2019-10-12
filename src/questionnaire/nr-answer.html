@@ -80,6 +80,13 @@
       <input type="number" value.bind="value" class="form-control" name.bind="name" />
     </div>
   </div>
+  <div if.bind="question.questionType === 'yearofstudy'" class="">
+    <div repeat.for="option of yearofstudyOptions" class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="${ name }-yearofstudy-${ $index }" name.bind="name"
+        value.bind="option" checked.bind="value">
+      <label class="custom-control-label" for="${ name }-yearofstudy-${ $index }">${ option }</label>
+    </div>
+  </div>
   <textarea if.bind="question.questionType==='open'" type="text" value.bind="value" class="form-control"
     name.bind="name"></textarea>
 </template>

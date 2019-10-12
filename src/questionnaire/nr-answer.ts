@@ -57,10 +57,10 @@ export class NrAnswer implements ComponentBind, ComponentUnbind {
     ];
 
     private yesnounsure = [
-        'Yes',
-        'No',
-        'Unsure',
-    ];
+      'Yes',
+      'No',
+      'Unsure',
+  ];
 
     private gpaOptions = [
         'Mostly A - First/1st',
@@ -70,6 +70,14 @@ export class NrAnswer implements ComponentBind, ComponentUnbind {
         'Mostly C - Lower Second/2:2',
         'Mostly C or D - 2:2 or 3:1',
         'Mostly D - Third/3:1',
+    ];
+
+    private yearofstudyOptions = [
+        'Level 1 student',
+        'Level 2 student',
+        'Level 3 student',
+        'Level 4 student',
+        'Other'
     ];
 
     private taughtInOptions = [
