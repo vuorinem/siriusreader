@@ -1,6 +1,6 @@
 {
   "debug": false,
   "testing": false,
-  "apiUrl": "https://ereader-v2-api.azurewebsites.net",
-  "tokenEndpoint": "https://ereader-v2-api.azurewebsites.net/connect/token"
+  "apiUrl": "https://siriusreader-api.azurewebsites.net",
+  "tokenEndpoint": "https://siriusreader-api.azurewebsites.net/connect/token"
 }
