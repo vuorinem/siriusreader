@@ -1,11 +1,7 @@
 {
-  "name": "e-reader-v-2-client",
-  "description": "An Aurelia client application.",
-  "version": "0.1.0",
-  "repository": {
-    "type": "???",
-    "url": "???"
-  },
+  "name": "siriusreader",
+  "description": "Sirius Reader",
+  "version": "2.0.0",
   "license": "MIT",
   "dependencies": {
     "aurelia-animator-css": "^1.0.4",

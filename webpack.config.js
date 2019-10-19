@@ -15,7 +15,6 @@ const when = (condition, config, negativeConfig) =>
   condition ? ensureArray(config) : ensureArray(negativeConfig);
 
 // primary config:
-const title = 'Aurelia Navigation Skeleton';
 const outDir = path.resolve(__dirname, project.platform.output);
 const srcDir = path.resolve(__dirname, 'src');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
@@ -237,7 +236,7 @@ module.exports = ({ production } = {}, { extractCss, analyze, tests, hmr, port, 
       template: 'index.ejs',
       metadata: {
         // available in index.ejs //
-        title, baseUrl
+        baseUrl
       }
     }),
     // ref: https://webpack.js.org/plugins/mini-css-extract-plugin/
