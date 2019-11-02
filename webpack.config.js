@@ -68,6 +68,7 @@ module.exports = ({ production } = {}, { extractCss, analyze, tests, hmr, port, 
     moduleIds: 'hashed',
     // Use splitChunks to breakdown the App/Aurelia bundle down into smaller chunks
     // https://webpack.js.org/plugins/split-chunks-plugin/
+    concatenateModules: false,
     splitChunks: {
       hidePathInfo: true, // prevents the path from being used in the filename when using maxSize
       chunks: "initial",
